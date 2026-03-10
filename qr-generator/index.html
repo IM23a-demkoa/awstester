@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>Smart QR-Code Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #qrCanvas {
+            display: block;
+            margin: 30px auto;
+        }
+
+        .download {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Smart QR-Code Generator</h1>
+
+    <label for="text">Text / URL</label>
+    <textarea id="text" rows="3" placeholder="https://example.com"></textarea>
+
+    <div class="options">
+        <div>
+            <label for="size">Größe (px)</label>
+            <input type="number" id="size" value="256" min="100" max="512" />
+        </div>
+
+        <div>
+            <label for="color">Farbe</label>
+            <input type="color" id="color" value="#000000" />
+        </div>
+
+        <div>
+            <label for="bgColor">Hintergrund</label>
+            <input type="color" id="bgColor" value="#ffffff" />
+        </div>
+    </div>
+
+    <button onclick="generateQR()">QR-Code generieren</button>
+
+    <canvas id="qrCanvas"></canvas>
+
+    <div class="download">
+        <button onclick="downloadQR()">Als PNG herunterladen</button>
+    </div>
+</div>
+
+<script>
+    function generateQR() {
+        const text = document.getElementById("text").value;
+        const size = parseInt(document.getElementById("size").value);
+        const color = document.getElementById("color").value;
+        const bgColor = document.getElementById("bgColor").value;
+        const canvas = document.getElementById("qrCanvas");
+
+        if (!text) {
+            alert("Bitte Text oder URL eingeben!");
+            return;
+        }
+
+        QRCode.toCanvas(canvas, text, {
+            width: size,
+            color: {
+                dark: color,
+                light: bgColor
+            }
+        }, function (error) {
+            if (error) console.error(error);
+        });
+    }
+
+    function downloadQR() {
+        const canvas = document.getElementById("qrCanvas");
+        const link = document.createElement("a");
+        link.download = "qr-code.png";
+        link.href = canvas.toDataURL();
+        link.click();
+    }
+</script>
+
+</body>
+</html>
