@@ -5,10 +5,7 @@
     <title>Smart QR-Code Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- QR Code Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 
@@ -37,6 +34,10 @@
         </div>
     </div>
 
+    <!-- NEU -->
+    <label for="logo">Logo (optional)</label>
+    <input type="file" id="logo" accept="image/*">
+
     <button onclick="generateQR()">QR-Code generieren</button>
 
     <canvas id="qrCanvas"></canvas>
@@ -46,7 +47,6 @@
     </div>
 </div>
 
-<!-- JS -->
 <script src="script.js"></script>
 
 </body>
