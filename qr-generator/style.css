@@ -50,3 +50,9 @@ button {
 .download {
     text-align: center;
 }
+
+#history button {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+}

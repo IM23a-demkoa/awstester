@@ -1,3 +1,5 @@
+let history = JSON.parse(localStorage.getItem("qrHistory")) || [];
+
 function generateQR() {
     const text = document.getElementById("text").value;
     const size = parseInt(document.getElementById("size").value);
@@ -20,7 +22,7 @@ function generateQR() {
     }, function (error) {
         if (error) console.error(error);
 
-        // Logo hinzufügen
+        // Logo
         if (logoInput.files.length > 0) {
             const ctx = canvas.getContext("2d");
             const img = new Image();
@@ -36,6 +38,26 @@ function generateQR() {
             img.src = URL.createObjectURL(logoInput.files[0]);
         }
     });
+
+    // HISTORY
+    history.push(text);
+    localStorage.setItem("qrHistory", JSON.stringify(history));
+    renderHistory();
+}
+
+function renderHistory() {
+    const container = document.getElementById("history");
+    container.innerHTML = "";
+
+    history.slice(-5).reverse().forEach(item => {
+        const btn = document.createElement("button");
+        btn.textContent = item;
+        btn.onclick = () => {
+            document.getElementById("text").value = item;
+            generateQR();
+        };
+        container.appendChild(btn);
+    });
 }
 
 function downloadQR() {
@@ -45,3 +67,6 @@ function downloadQR() {
     link.href = canvas.toDataURL();
     link.click();
 }
+
+// Beim Laden
+renderHistory();
