@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FrogSafe – Die sichere Froschfalle</title>
+
+  <!-- MODERN FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* ================= RESET ================= */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
+    }
+
+    body{
+      background:#f8faf9;
+      color:#1a1a1a;
+      line-height:1.6;
+    }
+
+    /* ================= NAVBAR ================= */
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      padding:18px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      backdrop-filter:blur(12px);
+      background:rgba(255,255,255,0.7);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:24px;
+      font-weight:700;
+      color:#1f8a3a;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#333;
+      font-weight:500;
+      transition:.3s;
+    }
+
+    nav a:hover{
+      color:#1f8a3a;
+    }
+
+    /* ================= HERO ================= */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 20px 40px;
+
+      background:
+        linear-gradient(rgba(10,40,20,.55),rgba(10,40,20,.55)),
+        url("./img_1.png");
+
+      background-size:cover;
+      background-position:center;
+      color:white;
+    }
+
+    .hero h1{
+      font-size:56px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:20px;
+      opacity:.9;
+      margin-bottom:35px;
+    }
+
+    /* ================= BUTTON ================= */
+    .btn{
+      display:inline-block;
+      padding:16px 34px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+
+      background:linear-gradient(135deg,#2ecc71,#1f8a3a);
+      color:white;
+
+      box-shadow:0 10px 30px rgba(46,204,113,.3);
+
+      transition:.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 15px 40px rgba(46,204,113,.45);
+    }
+
+    /* ================= SECTION ================= */
+    section{
+      padding:110px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:38px;
+      font-weight:700;
+      margin-bottom:70px;
+    }
+
+    /* ================= PRODUCT ================= */
+    .product{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .product img{
+      width:100%;
+      border-radius:20px;
+      box-shadow:0 30px 60px rgba(0,0,0,0.12);
+    }
+
+    /* ================= FEATURES ================= */
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:35px;
+    }
+
+    .feature{
+      background:white;
+      padding:40px;
+      border-radius:20px;
+      text-align:center;
+
+      transition:.35s;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .feature:hover{
+      transform:translateY(-8px);
+      box-shadow:0 25px 50px rgba(0,0,0,0.12);
+    }
+
+    /* ================= REVIEWS ================= */
+    .reviews{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .review{
+      background:white;
+      padding:35px;
+      border-radius:20px;
+
+      box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .review strong{
+      display:block;
+      margin-top:15px;
+    }
+
+    /* ================= CTA ================= */
+    .cta{
+      text-align:center;
+      padding:80px;
+      border-radius:30px;
+
+      background:
+        linear-gradient(135deg,#2ecc71,#1f8a3a);
+
+      color:white;
+
+      box-shadow:0 25px 60px rgba(0,0,0,0.2);
+    }
+
+    /* ================= FOOTER ================= */
+    footer{
+      margin-top:80px;
+      padding:50px;
+      text-align:center;
+      background:#0f1411;
+      color:#9aa39c;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media(max-width:900px){
+
+      .product{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:38px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">FrogSafe</div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Produkt</a></li>
+    <li><a href="#">Vorteile</a></li>
+    <li><a href="#">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Schutz für deinen Teich</h1>
+    <p>Die moderne, tierfreundliche Froschfalle für sichere Gartenteiche.</p>
+    <a href="#" class="btn">Jetzt kaufen</a>
+  </div>
+</div>
+
+<!-- PRODUCT -->
+<section>
+  <h2 class="section-title">Das Produkt</h2>
+
+  <div class="product">
+    <img src="./img.png">
+
+    <div>
+      <h2>FrogSafe Froschfalle</h2>
+      <p>
+        Tierfreundlicher Schutz für deinen Teich — entwickelt für moderne
+        Gartenbesitzer.
+      </p>
+
+      <br>
+
+      <p>✔ Tierfreundlich<br>
+        ✔ Wetterfest<br>
+        ✔ Einfache Installation</p>
+
+      <br>
+      <a href="#" class="btn">In den Warenkorb</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <h2 class="section-title">Warum FrogSafe?</h2>
+
+  <div class="features">
+
+    <div class="feature">
+      <h3>🌿 Umweltfreundlich</h3>
+      <p>Keine Chemikalien oder schädliche Stoffe.</p>
+    </div>
+
+    <div class="feature">
+      <h3>⚡ Schnell installiert</h3>
+      <p>In wenigen Minuten einsatzbereit.</p>
+    </div>
+
+    <div class="feature">
+      <h3>🛡️ Sicher für Tiere</h3>
+      <p>Schonende Lösung für Teichbewohner.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <h2 class="section-title">Kundenbewertungen</h2>
+
+  <div class="reviews">
+
+    <div class="review">
+      ⭐⭐⭐⭐⭐
+      <p>"Endlich eine Lösung für unseren Gartenteich!"</p>
+      <strong>– Markus K.</strong>
+    </div>
+
+    <div class="review">
+      ⭐⭐⭐⭐⭐
+      <p>"Sehr hochwertige Verarbeitung."</p>
+      <strong>– Laura S.</strong>
+    </div>
+
+    <div class="review">
+      ⭐⭐⭐⭐⭐
+      <p>"Einfach aufgebaut und super effektiv."</p>
+      <strong>– Daniel R.</strong>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="cta">
+    <h2>Mach deinen Teich sicher mit FrogSafe</h2>
+    <br>
+    <a href="#" class="btn">Jetzt bestellen</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 FrogSafe – Alle Rechte vorbehalten</p>
+</footer>
+
+</body>
+</html>
